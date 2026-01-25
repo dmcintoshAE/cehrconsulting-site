@@ -1,0 +1,825 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CEHR — Executive HR Consulting Services</title>
+  <meta name="description" content="CEHR Executive HR Consulting Services — strategic people solutions that drive business performance." />
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --ink:#0b0f14;
+      --muted:#5b6470;
+      --line:rgba(10,20,30,.10);
+
+      --teal0:#071b20;
+      --teal2:#0f5664;
+
+      --accent:#e86d2b;
+      --accent2:#b50000;
+
+      --radius:18px;
+      --shadow: 0 18px 60px rgba(0,0,0,.08);
+      --max:1120px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ margin:0; padding:0; background:var(--bg); color:var(--ink); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif; }
+    a{ color:inherit; text-decoration:none; }
+    img{ max-width:100%; height:auto; display:block; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:0 24px; }
+    .section{ padding:84px 0; }
+    .subtle{ color:var(--muted); }
+
+    /* NAV */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      background:rgba(255,255,255,.78);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid rgba(0,0,0,.06);
+    }
+    .nav-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:14px 24px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:900; letter-spacing:.08em;
+    }
+    .brand-mark{
+      width:10px; height:10px; border-radius:3px; background:var(--accent);
+      box-shadow:0 0 0 4px rgba(232,109,43,.12);
+    }
+    .nav-links{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
+    .nav-links a{
+      font-size:14px;
+      color:rgba(10,20,30,.75);
+      padding:8px 10px;
+      border-radius:10px;
+      white-space:nowrap;
+      font-weight:650;
+    }
+    .nav-links a:hover{ background:rgba(0,0,0,.04); color:rgba(10,20,30,.9); }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      border:1px solid rgba(0,0,0,.10);
+      padding:10px 14px;
+      border-radius:12px;
+      font-weight:900;
+      font-size:14px;
+      cursor:pointer;
+      background:#fff;
+    }
+    .btn.primary{
+      background:var(--accent);
+      border-color:transparent;
+      color:#fff;
+      box-shadow:0 10px 30px rgba(232,109,43,.28);
+    }
+
+    /* HERO */
+    .hero{ padding:88px 0 56px; }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:34px;
+      align-items:center;
+    }
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      color:rgba(10,20,30,.70);
+      font-weight:900;
+      font-size:13px;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+    .kicker .pill{ width:10px; height:10px; border-radius:3px; background:var(--accent); }
+    .h1{
+      font-size: clamp(56px, 6vw, 92px);
+      line-height:1.02;
+      margin:14px 0 10px;
+      font-weight:900;
+      letter-spacing:-.02em;
+    }
+    .underline{
+      height:6px;
+      width:min(520px, 72%);
+      background:var(--accent);
+      border-radius:999px;
+      margin:18px 0 18px;
+    }
+    .h2{
+      font-size: clamp(22px, 2.2vw, 32px);
+      font-weight:600;
+      margin:0;
+      color:rgba(10,20,30,.82);
+    }
+    .hero-card{
+      background:linear-gradient(140deg, rgba(7,27,32,.92), rgba(15,86,100,.92));
+      color:#fff;
+      border-radius:var(--radius);
+      padding:24px;
+      box-shadow: var(--shadow);
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .hero-card h3{ margin:0 0 10px; font-size:18px; letter-spacing:.01em; }
+    .hero-card p{ margin:0 0 18px; color:rgba(255,255,255,.82); line-height:1.6; font-size:14px; }
+    .hero-card .stats{ display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:14px; }
+    .stat{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:14px;
+      padding:12px;
+    }
+    .stat b{ display:block; font-size:14px; }
+    .stat span{ display:block; font-size:12px; color:rgba(255,255,255,.75); margin-top:4px; }
+
+    /* BAND TITLE */
+    .band{
+      background:linear-gradient(90deg, var(--teal0), var(--teal2));
+      color:#fff;
+      padding:44px 0;
+    }
+    .band h2{
+      margin:0;
+      font-size: clamp(34px, 4vw, 56px);
+      font-weight:950;
+      letter-spacing:-.02em;
+    }
+
+    /* SERVICES */
+    .section-light{ background:#fff; }
+    .container{ max-width:var(--max); margin:0 auto; padding:0 24px; }
+
+    .two-column{
+      display:grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap:22px;
+      align-items:stretch;
+      margin-top:24px;
+    }
+    .panel{
+      border-radius: var(--radius);
+      border:1px solid rgba(0,0,0,.08);
+      box-shadow:0 18px 55px rgba(0,0,0,.06);
+      overflow:hidden;
+    }
+    .panel.dark{
+      background: linear-gradient(165deg, rgba(7,27,32,.98), rgba(15,86,100,.98));
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:44px 28px;
+      text-align:center;
+    }
+    .panel.dark h2{
+      margin:0;
+      font-size: clamp(28px, 3.2vw, 44px);
+      line-height:1.12;
+      letter-spacing:-.01em;
+      font-weight:950;
+    }
+    .panel.light{
+      background:#fff;
+      padding:22px 22px;
+    }
+    .panel.light p{
+      margin:0 0 14px;
+      color:rgba(10,20,30,.78);
+      line-height:1.65;
+      font-size:15px;
+    }
+    .panel.light h4{
+      margin:18px 0 10px;
+      font-size:14px;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      color:rgba(10,20,30,.72);
+    }
+    .panel.light ul{
+      margin:0 0 14px 18px;
+      padding:0;
+      color:rgba(10,20,30,.78);
+      line-height:1.6;
+      font-size:15px;
+    }
+    .panel.light .emphasis{
+      margin-top:10px;
+      font-weight:800;
+      color:rgba(10,20,30,.78);
+    }
+
+    .section-divider{
+      height:1px;
+      background:var(--line);
+      margin:44px 0;
+    }
+
+    .centered{
+      text-align:center;
+      margin:0 0 18px;
+      font-size: clamp(30px, 3.2vw, 44px);
+      font-weight:950;
+      letter-spacing:-.02em;
+    }
+
+    .card-grid{
+      display:grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap:14px;
+      align-items:stretch;
+    }
+    .card{
+      grid-column: span 2;
+      background:#fff;
+      border:1px solid rgba(0,0,0,.08);
+      border-radius:16px;
+      padding:16px 16px;
+      box-shadow:0 16px 40px rgba(0,0,0,.06);
+      min-height: 190px;
+    }
+    .card h3{
+      margin:0 0 8px;
+      font-size:15px;
+      font-weight:950;
+      letter-spacing:.01em;
+    }
+    .card p{
+      margin:0;
+      color:rgba(10,20,30,.74);
+      line-height:1.55;
+      font-size:14px;
+    }
+
+    .ops-grid{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:14px;
+      align-items:stretch;
+      margin-top:18px;
+    }
+    .ops{
+      background:#fff;
+      border:1px solid rgba(0,0,0,.08);
+      border-radius:16px;
+      padding:16px 16px;
+      box-shadow:0 16px 40px rgba(0,0,0,.06);
+      min-height: 210px;
+    }
+    .ops h4{
+      margin:0 0 8px;
+      font-size:16px;
+      font-weight:950;
+    }
+    .ops .accent{
+      margin:0 0 10px;
+      color:var(--accent2);
+      font-weight:950;
+      font-size:12px;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+    .ops p{
+      margin:0;
+      color:rgba(10,20,30,.74);
+      line-height:1.55;
+      font-size:14px;
+    }
+
+    /* ABOUT + MEET TIFFANY */
+    .about-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:18px;
+      align-items:stretch;
+      margin-top:18px;
+    }
+    .about-card{
+      background:#fff;
+      border:1px solid rgba(0,0,0,.08);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:0 18px 55px rgba(0,0,0,.06);
+    }
+    .about-card p{
+      margin:0;
+      line-height:1.65;
+      color:rgba(10,20,30,.78);
+      font-size:15px;
+    }
+
+    .meet-card{
+      margin-top:18px;
+      background:#fff;
+      border:1px solid rgba(0,0,0,.08);
+      border-radius:var(--radius);
+      box-shadow:0 18px 55px rgba(0,0,0,.06);
+      overflow:hidden;
+    }
+    .meet-grid{
+      display:grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap:0;
+      align-items:stretch;
+    }
+    .meet-photo{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.01));
+      padding:24px;
+    }
+
+    .meet-photo img{
+      max-height:420px;
+      width:auto;
+      max-width:100%;
+      object-fit:contain;
+      border-radius:14px;
+      box-shadow:0 18px 45px rgba(0,0,0,.18);
+    }
+    .meet-body{
+      padding:22px;
+    }
+    .meet-body h3{
+      margin:0 0 4px;
+      font-size:24px;
+      font-weight:950;
+      letter-spacing:-.01em;
+    }
+    .meet-body .role{
+      font-weight:800;
+      color:rgba(10,20,30,.78);
+      margin:0;
+      font-size:15px;
+    }
+    .meet-body .tagline{
+      font-style:italic;
+      color:rgba(10,20,30,.76);
+      margin:4px 0 0;
+      font-size:15px;
+      font-weight:650;
+    }
+    .meet-body .line{
+      width:220px;
+      height:4px;
+      background:var(--accent);
+      border-radius:999px;
+      margin:14px 0 16px;
+    }
+    .meet-body p{
+      margin:0 0 14px;
+      line-height:1.65;
+      color:rgba(10,20,30,.78);
+      font-size:15px;
+    }
+    .meet-body .quote{
+      margin-top:16px;
+      font-style:italic;
+      font-weight:800;
+      color:rgba(10,20,30,.82);
+    }
+
+    /* CONTACT */
+    .contact-wrap{ padding-top:44px; }
+    label{ display:block; font-size:13px; font-weight:950; color:rgba(10,20,30,.72); margin:0 0 6px; }
+    input, textarea{
+      width:100%;
+      padding:12px 12px;
+      font-size:16px;
+      border-radius:12px;
+      border:1px solid rgba(0,0,0,.16);
+      background:#fff;
+      outline:none;
+    }
+    input:focus, textarea:focus{
+      border-color: rgba(232,109,43,.55);
+      box-shadow: 0 0 0 5px rgba(232,109,43,.14);
+    }
+    textarea{ min-height:140px; resize:vertical; }
+    .row{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .form-card{
+      background:#fff;
+      border:1px solid rgba(0,0,0,.08);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:0 18px 55px rgba(0,0,0,.06);
+    }
+    .msg{ margin-top:12px; font-size:14px; }
+    .ok{ color:#0b7a2b; font-weight:900; }
+    .bad{ color:#b40000; font-weight:900; }
+    .honeypot{ position:absolute; left:-9999px; top:-9999px; }
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:28px 0;
+      color:rgba(10,20,30,.62);
+      font-size:13px;
+    }
+
+    /* responsive */
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns:1fr; }
+      .two-column{ grid-template-columns:1fr; }
+      .card-grid{ grid-template-columns: repeat(2, 1fr); }
+      .card{ grid-column: auto; min-height:auto; }
+      .ops-grid{ grid-template-columns: repeat(2, 1fr); }
+      .about-grid{ grid-template-columns:1fr; }
+      .meet-grid{ grid-template-columns:1fr; }
+      .meet-photo{ min-height:340px; }
+    }
+    @media (max-width: 560px){
+      .row{ grid-template-columns:1fr; }
+      .card-grid{ grid-template-columns:1fr; }
+      .ops-grid{ grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="/CEHR/">
+        <span class="brand-mark"></span>
+        CEHR
+      </a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a class="btn primary" href="#contact">Request a consult</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="kicker"><span class="pill"></span> Executive HR Consulting</div>
+          <div class="h1">CEHR</div>
+          <div class="underline"></div>
+          <h2 class="h2">Executive HR Consulting Services</h2>
+
+          <div style="display:flex; gap:12px; margin-top:22px; flex-wrap:wrap;">
+            <a class="btn primary" href="#contact">Talk with CEHR</a>
+            <a class="btn" href="#services">Explore services</a>
+          </div>
+
+          <p class="subtle" style="margin-top:16px; max-width:720px; line-height:1.65;">
+            Strategic people solutions that drive business performance — designed for leaders navigating growth,
+            transformation, and organizational scale.
+          </p>
+        </div>
+
+        <div class="hero-card">
+          <h3>Strategic people solutions — built for scale</h3>
+          <p>
+            Executive HR support that strengthens leadership alignment, modernizes performance systems,
+            and helps organizations manage change with clarity.
+          </p>
+
+          <div class="stats">
+            <div class="stat">
+              <b>Leadership Alignment</b>
+              <span>Operating model, roles, accountability</span>
+            </div>
+            <div class="stat">
+              <b>Performance & Change</b>
+              <span>Processes that stick through growth</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <div id="services" class="band">
+    <div class="wrap">
+      <h2>Services</h2>
+    </div>
+  </div>
+
+  <section class="section section-light">
+    <div class="container">
+
+      <!-- Strategic People Solutions -->
+      <div class="two-column">
+        <div class="panel dark">
+          <h2>Strategic People Solutions that Drive Business Performance</h2>
+        </div>
+
+        <div class="panel light">
+          <p>
+            <strong>CEHR</strong> partners with organizations to transform people strategy
+            into sustained business performance. We design tailored leadership, culture,
+            and performance solutions for C-suite leaders, Boards, and executive teams
+            aligned to shared goals of growth, innovation, and execution.
+          </p>
+
+          <p>
+            Our consulting approach blends strategic foresight with operational excellence,
+            integrating advanced HR systems, data-driven insights, and ethical AI practices
+            to future-proof organizations.
+          </p>
+
+          <h4>Core Areas of Expertise</h4>
+          <ul>
+            <li>Leadership & Executive Coaching (360 Assessments, Succession Planning)</li>
+            <li>Organizational Design & Change Management</li>
+            <li>Culture Transformation & Inclusion Strategy</li>
+            <li>Performance & Compensation Architecture</li>
+            <li>Enterprise Start-Up and Scale-Up Infrastructure</li>
+            <li>Board Evaluations</li>
+          </ul>
+
+          <p class="emphasis">
+            CEHR’s philosophy is grounded in partnership, integrity, and precision —
+            ensuring every engagement strengthens both people and performance.
+          </p>
+
+          <p class="emphasis">
+            Let’s partner to drive organizational excellence and strategic growth.
+          </p>
+        </div>
+      </div>
+
+      <!-- Signature Services -->
+      <div class="section-divider"></div>
+
+      <h2 class="centered">Signature Services</h2>
+
+      <div class="card-grid">
+        <div class="card">
+          <h3>Developmental Executive 360 Coaching</h3>
+          <p>
+            Strengthen leadership effectiveness through confidential, data-driven feedback aligned with company
+            culture and business goals. Coaching supports executive growth, self-awareness, and organizational impact.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Leadership Development</h3>
+          <p>
+            Executive development experiences that accelerate capability through experiential learning, communication mastery,
+            and decision-making confidence.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Performance Management & Business Success</h3>
+          <p>
+            Redesign performance frameworks that balance people, accountability, and results — driving clarity, engagement,
+            and consistent execution.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Enterprise Start-Up Services & Packages</h3>
+          <p>
+            Infrastructure design for rapid growth, including role clarity, governance, performance systems,
+            and scalable HR foundations.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Change Management</h3>
+          <p>
+            Guide organizations through change by aligning strategy, communication, and leadership behaviors to ensure adoption
+            and sustainability.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Board Evaluation</h3>
+          <p>
+            Independent, structured board evaluations with actionable insights that strengthen governance, effectiveness,
+            and strategic oversight.
+          </p>
+        </div>
+      </div>
+
+      <!-- Operational People Services -->
+      <div class="section-divider"></div>
+
+      <h2 class="centered">Operational People Services</h2>
+
+      <div class="ops-grid">
+        <div class="ops">
+          <h4>Talent Acquisition</h4>
+          <div class="accent">Planning Inclusion</div>
+          <p>
+            Inclusive, data-driven talent strategies that attract and retain exceptional leaders while aligning hiring practices
+            with organizational culture and long-term sustainability.
+          </p>
+        </div>
+
+        <div class="ops">
+          <h4>Employee Relations</h4>
+          <div class="accent">Investigations · Reporting · Discussions</div>
+          <p>
+            Trusted guidance through complex workplace dynamics, including confidential investigations, reporting support,
+            and leadership discussions that foster transparency, resolution, and accountability.
+          </p>
+        </div>
+
+        <div class="ops">
+          <h4>Training & Development</h4>
+          <div class="accent">New Manager Support</div>
+          <p>
+            Experiential learning that builds communication, confidence, and leadership agility — including support for new managers
+            navigating difficult conversations and team effectiveness.
+          </p>
+        </div>
+
+        <div class="ops">
+          <h4>Compensation Analysis</h4>
+          <div class="accent">Gap Analysis</div>
+          <p>
+            Comprehensive pay and equity analysis that identifies disparities, aligns benchmarks, and supports fair, competitive
+            compensation decisions tied to performance outcomes and organizational values.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <div id="about" class="band">
+    <div class="wrap">
+      <h2>About CEHR</h2>
+    </div>
+  </div>
+
+  <div class="section" style="padding-top:44px;">
+    <div class="wrap">
+
+      <!-- Meet Tiffany (NEW) -->
+      <div class="meet-card">
+        <div class="meet-grid">
+          <div class="meet-photo">
+            <img src="/CEHR/Images/Tiffany.jpg.png" alt="Tiffany Summerville" />
+          </div>
+          <div class="meet-body">
+            <h3>Meet Tiffany Summerville</h3>
+            <p class="role">President · CHRO Consultant</p>
+            <p class="tagline">Transforming People Strategies into Business Outcomes</p>
+            <div class="line"></div>
+
+            <p>
+              Award-winning Chief Human Resources Officer with over 25 years of experience transforming people
+              strategy into measurable business outcomes. Recognized as <strong>SHRM NYS HR Professional of the Year</strong>
+              and featured in <em>Who’s Who in America</em>, Tiffany brings a proven record of scaling organizations,
+              strengthening leadership pipelines, and driving cultural and operational transformation.
+            </p>
+
+            <p>
+              Her background spans <strong>life sciences, biotechnology, pharmaceuticals, and research</strong>, where she has built
+              high-performing teams, advanced inclusion, and aligned HR strategy with enterprise growth.
+            </p>
+
+            <p class="quote">
+              “Leadership is culture — it’s crafted with intention, precision, presence, and purpose.”
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Existing About copy (kept) -->
+      <div class="about-grid">
+        <div class="about-card">
+          <p>
+            Unlock the full potential of your leadership team and elevate your organization's success with CEHR’s
+            Executive HR Consulting services. We specialize in tailored solutions that foster growth, alignment,
+            and sustainable performance across leadership and organizational structure.
+          </p>
+        </div>
+
+        <div class="about-card">
+          <p>
+            Our approach helps transform organizations from the inside out — ensuring leadership, performance,
+            and change strategies work in harmony with business goals. Together, we build resilient, high-performing
+            organizations prepared for the future.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact" class="band">
+    <div class="wrap">
+      <h2>Contact</h2>
+    </div>
+  </div>
+
+  <div class="section contact-wrap">
+    <div class="wrap">
+      <div class="form-card">
+
+        <!--
+          STABLE CONTACT FORM (NO CLOUDFLARE FUNCTIONS)
+          Replace tiffany@example.com with Tiffany's real email address.
+          First submission may trigger a one-time verification email from FormSubmit.
+        -->
+        <form id="cehrForm" method="POST" action="https://formsubmit.co/summerville.tiffany@gmail.com">
+          <!-- FormSubmit options -->
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_subject" value="New CEHR Contact Form Submission" />
+          <input type="hidden" name="_template" value="table" />
+          <!-- Send them back to this page with a success flag -->
+          <input type="hidden" name="_next" value="https://ariesenterprises.org/CEHR/?sent=1#contact" />
+
+          <!-- Bot honeypot (FormSubmit recognizes _honey) -->
+          <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" />
+
+          <!-- Your existing honeypot field (kept) -->
+          <div class="honeypot" aria-hidden="true">
+            <label>Leave this empty</label>
+            <input name="company_website" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" autocomplete="name" required />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required />
+            </div>
+          </div>
+
+          <div style="margin-top:14px;">
+            <label for="subject">Subject</label>
+            <input id="subject" name="subject" />
+          </div>
+
+          <div style="margin-top:14px;">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+
+          <!-- Extra context -->
+          <input type="hidden" name="source" value="CEHR site contact section" />
+          <input type="hidden" name="page_url" id="page_url_field" value="" />
+
+          <button class="btn primary" type="submit" style="width:100%; margin-top:14px;">
+            Send message
+          </button>
+
+          <div id="formMsg" class="msg" aria-live="polite"></div>
+
+          <div class="subtle" style="margin-top:10px; font-size:13px;">
+            If the form doesn’t send, email directly while we finalize delivery settings.
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      © <span id="y"></span> CEHR · Hosted on ariesenterprises.org/CEHR
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Add page URL context into the email
+    (function () {
+      var el = document.getElementById("page_url_field");
+      if (el) el.value = window.location.href;
+    })();
+
+    // Lightweight success message when redirected back with ?sent=1
+    (function () {
+      var msg = document.getElementById("formMsg");
+      if (!msg) return;
+
+      var params = new URLSearchParams(window.location.search);
+      if (params.get("sent") === "1") {
+        msg.textContent = "Message sent successfully.";
+        msg.className = "msg ok";
+      }
+    })();
+  </script>
+</body>
+</html>
