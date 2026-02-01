@@ -741,8 +741,8 @@
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_subject" value="New CEHR Contact Form Submission" />
           <input type="hidden" name="_template" value="table" />
-          <!-- Send them back to this page with a success flag -->
-          <input type="hidden" name="_next" value="https://cehrconsulting.com/?sent=1#contact" />
+          <!-- Send them back to this page with a success flag (set dynamically in JS) -->
+          <input type="hidden" name="_next" id="next_field" value="" />
 
           <!-- Bot honeypot (FormSubmit recognizes _honey) -->
           <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" />
@@ -802,6 +802,22 @@
     (function () {
       var el = document.getElementById("page_url_field");
       if (el) el.value = window.location.href;
+    })();
+
+    // NEW: Make FormSubmit redirect back to *this* environment (prod, preview, staging)
+    (function () {
+      var next = document.getElementById("next_field");
+      if (!next) return;
+
+      // Base URL without query/hash so we don't duplicate ?sent=1
+      var base = window.location.origin + window.location.pathname;
+
+      // If served as /index.html, redirect to the cleaner directory URL if possible
+      if (base.toLowerCase().endsWith("/index.html")) {
+        base = base.slice(0, -("/index.html".length)) + "/";
+      }
+
+      next.value = base + "?sent=1#contact";
     })();
 
     // Lightweight success message when redirected back with ?sent=1
