@@ -388,15 +388,16 @@
       color:rgba(10,20,30,.82);
     }
 
-    /* BADGES (UPDATED TO BE READABLE) */
+    /* BADGES (UPDATED: FORCE 3-UP SIDE-BY-SIDE) */
     .badge-row{
       margin-top:16px;
       padding-top:16px;
       border-top:1px solid rgba(0,0,0,.08);
-      display:flex;
+
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap:16px;
-      flex-wrap:wrap;
-      align-items:flex-start;
+      align-items:stretch;
     }
     .badge{
       background:#fff;
@@ -404,22 +405,21 @@
       border-radius:16px;
       padding:12px;
       box-shadow:0 14px 34px rgba(0,0,0,.06);
+
       display:flex;
       align-items:center;
       justify-content:center;
-      min-width: 210px; /* gives the SHRM badge room */
+      width:100%;
     }
     .badge img{
-      height:170px;       /* main bump: bigger + readable */
+      height:170px;
       width:auto;
-      max-width:340px;
+      max-width:100%;
       object-fit:contain;
     }
-    /* Give the SHRM badge a bit more size */
-    .badge-row .badge:first-child img{ height:210px; max-width:360px; }
-    /* Round badges can be a touch smaller to stay balanced */
-    .badge-row .badge:nth-child(2) img{ height:180px; max-width:320px; }
-    .badge-row .badge:nth-child(3) img{ height:180px; max-width:320px; }
+    .badge-row .badge:first-child img{ height:210px; }
+    .badge-row .badge:nth-child(2) img{ height:180px; }
+    .badge-row .badge:nth-child(3) img{ height:180px; }
 
     /* CONTACT */
     .contact-wrap{ padding-top:44px; }
@@ -469,19 +469,16 @@
       .meet-grid{ grid-template-columns:1fr; }
       .meet-photo{ min-height:340px; }
 
-      /* Keep badges readable on tablet */
-      .badge{ min-width: 0; }
-      .badge img{ height:160px; }
-      .badge-row .badge:first-child img{ height:200px; }
+      /* 2-up on medium screens */
+      .badge-row{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width: 560px){
       .row{ grid-template-columns:1fr; }
       .card-grid{ grid-template-columns:1fr; }
       .ops-grid{ grid-template-columns:1fr; }
-      .badge-row{ justify-content:center; }
-      .badge{ width:100%; max-width:420px; }
-      .badge img{ height:170px; }
-      .badge-row .badge:first-child img{ height:210px; }
+
+      /* 1-up on phones */
+      .badge-row{ grid-template-columns: 1fr; }
     }
   </style>
 </head>
