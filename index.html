@@ -388,6 +388,36 @@
       color:rgba(10,20,30,.82);
     }
 
+    /* BADGES */
+    .badge-row{
+      margin-top:14px;
+      padding-top:14px;
+      border-top:1px solid rgba(0,0,0,.08);
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .badge{
+      background:#fff;
+      border:1px solid rgba(0,0,0,.08);
+      border-radius:14px;
+      padding:10px;
+      box-shadow:0 14px 34px rgba(0,0,0,.06);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .badge img{
+      height:92px;
+      width:auto;
+      max-width:260px;
+      object-fit:contain;
+    }
+    .badge-row .badge:first-child img{ height:104px; }
+    .badge-row .badge:nth-child(2) img{ height:86px; }
+    .badge-row .badge:nth-child(3) img{ height:88px; }
+
     /* CONTACT */
     .contact-wrap{ padding-top:44px; }
     label{ display:block; font-size:13px; font-weight:950; color:rgba(10,20,30,.72); margin:0 0 6px; }
@@ -440,6 +470,7 @@
       .row{ grid-template-columns:1fr; }
       .card-grid{ grid-template-columns:1fr; }
       .ops-grid{ grid-template-columns:1fr; }
+      .badge-row{ justify-content:center; }
     }
   </style>
 </head>
@@ -667,11 +698,11 @@
   <div class="section" style="padding-top:44px;">
     <div class="wrap">
 
-      <!-- Meet Tiffany (NEW) -->
+      <!-- Meet Tiffany -->
       <div class="meet-card">
         <div class="meet-grid">
           <div class="meet-photo">
-            <img src="/Images/Tiffany.jpg.png" alt="Tiffany Summerville" />
+            <img src="images/Tiffany.jpg.png" alt="Tiffany Summerville" />
           </div>
           <div class="meet-body">
             <h3>Meet Tiffany Summerville</h3>
@@ -694,6 +725,35 @@
             <p class="quote">
               “Leadership is couture — it’s crafted with intention, precision, presence, and purpose.”
             </p>
+
+            <!-- Badges -->
+            <div class="badge-row" aria-label="Professional recognitions">
+              <div class="badge">
+                <img
+                  src="images/SHRM%20HR%20Professional%20of%20the%20Year.jpg"
+                  alt="SHRM New York State — HR Professional of the Year — 2025 Winner"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="badge">
+                <img
+                  src="images/IW%20Badge.png"
+                  alt="Influential Women — Verified"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="badge">
+                <img
+                  src="images/Whos%20who%20badge.png"
+                  alt="Marquis Who’s Who — Honored Listee — 2025"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -732,22 +792,15 @@
     <div class="wrap">
       <div class="form-card">
 
-        <!--
-          STABLE CONTACT FORM (FORM SUBMIT ID — NO NAKED EMAIL)
-          Uses your FormSubmit form ID endpoint instead of an email address.
-        -->
         <form id="cehrForm" method="POST" action="https://formsubmit.co/4e48c165e79405ef6e4120e847276ffe">
-          <!-- FormSubmit options -->
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_subject" value="New CEHR Contact Form Submission" />
           <input type="hidden" name="_template" value="table" />
-          <!-- Send them back to this page with a success flag (set dynamically in JS) -->
+          <!-- Redirect set dynamically in JS -->
           <input type="hidden" name="_next" id="next_field" value="" />
 
-          <!-- Bot honeypot (FormSubmit recognizes _honey) -->
           <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" />
 
-          <!-- Your existing honeypot field (kept) -->
           <div class="honeypot" aria-hidden="true">
             <label>Leave this empty</label>
             <input name="company_website" tabindex="-1" autocomplete="off" />
@@ -774,7 +827,6 @@
             <textarea id="message" name="message" required></textarea>
           </div>
 
-          <!-- Extra context -->
           <input type="hidden" name="source" value="CEHR site contact section" />
           <input type="hidden" name="page_url" id="page_url_field" value="" />
 
@@ -798,29 +850,22 @@
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    // Add page URL context into the email
     (function () {
       var el = document.getElementById("page_url_field");
       if (el) el.value = window.location.href;
     })();
 
-    // NEW: Make FormSubmit redirect back to *this* environment (prod, preview, staging)
     (function () {
       var next = document.getElementById("next_field");
       if (!next) return;
 
-      // Base URL without query/hash so we don't duplicate ?sent=1
       var base = window.location.origin + window.location.pathname;
-
-      // If served as /index.html, redirect to the cleaner directory URL if possible
       if (base.toLowerCase().endsWith("/index.html")) {
         base = base.slice(0, -("/index.html".length)) + "/";
       }
-
       next.value = base + "?sent=1#contact";
     })();
 
-    // Lightweight success message when redirected back with ?sent=1
     (function () {
       var msg = document.getElementById("formMsg");
       if (!msg) return;
