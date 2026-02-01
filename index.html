@@ -388,35 +388,38 @@
       color:rgba(10,20,30,.82);
     }
 
-    /* BADGES */
+    /* BADGES (UPDATED TO BE READABLE) */
     .badge-row{
-      margin-top:14px;
-      padding-top:14px;
+      margin-top:16px;
+      padding-top:16px;
       border-top:1px solid rgba(0,0,0,.08);
       display:flex;
-      gap:12px;
+      gap:16px;
       flex-wrap:wrap;
-      align-items:center;
+      align-items:flex-start;
     }
     .badge{
       background:#fff;
       border:1px solid rgba(0,0,0,.08);
-      border-radius:14px;
-      padding:10px;
+      border-radius:16px;
+      padding:12px;
       box-shadow:0 14px 34px rgba(0,0,0,.06);
       display:flex;
       align-items:center;
       justify-content:center;
+      min-width: 210px; /* gives the SHRM badge room */
     }
     .badge img{
-      height:92px;
+      height:170px;       /* main bump: bigger + readable */
       width:auto;
-      max-width:260px;
+      max-width:340px;
       object-fit:contain;
     }
-    .badge-row .badge:first-child img{ height:104px; }
-    .badge-row .badge:nth-child(2) img{ height:86px; }
-    .badge-row .badge:nth-child(3) img{ height:88px; }
+    /* Give the SHRM badge a bit more size */
+    .badge-row .badge:first-child img{ height:210px; max-width:360px; }
+    /* Round badges can be a touch smaller to stay balanced */
+    .badge-row .badge:nth-child(2) img{ height:180px; max-width:320px; }
+    .badge-row .badge:nth-child(3) img{ height:180px; max-width:320px; }
 
     /* CONTACT */
     .contact-wrap{ padding-top:44px; }
@@ -465,12 +468,20 @@
       .about-grid{ grid-template-columns:1fr; }
       .meet-grid{ grid-template-columns:1fr; }
       .meet-photo{ min-height:340px; }
+
+      /* Keep badges readable on tablet */
+      .badge{ min-width: 0; }
+      .badge img{ height:160px; }
+      .badge-row .badge:first-child img{ height:200px; }
     }
     @media (max-width: 560px){
       .row{ grid-template-columns:1fr; }
       .card-grid{ grid-template-columns:1fr; }
       .ops-grid{ grid-template-columns:1fr; }
       .badge-row{ justify-content:center; }
+      .badge{ width:100%; max-width:420px; }
+      .badge img{ height:170px; }
+      .badge-row .badge:first-child img{ height:210px; }
     }
   </style>
 </head>
@@ -796,7 +807,6 @@
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_subject" value="New CEHR Contact Form Submission" />
           <input type="hidden" name="_template" value="table" />
-          <!-- Redirect set dynamically in JS -->
           <input type="hidden" name="_next" id="next_field" value="" />
 
           <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" />
